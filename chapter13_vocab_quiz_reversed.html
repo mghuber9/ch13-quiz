@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 13 Vocabulary Quiz (Reversed)</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 900px; margin: auto; }
+        .question { margin-bottom: 20px; }
+        .answers label { display: block; margin: 5px 0; }
+        #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+        #result { margin-top: 20px; font-size: 18px; }
+        .missed { margin-bottom: 10px; }
+        .correct-answer { color: green; }
+    </style>
+</head>
+<body>
+    <h2>Chapter 13 Vocabulary Quiz (Definitions as Questions)</h2>
+    <form id="quizForm"></form>
+    <button id="submitBtn">Submit</button>
+    <div id="result"></div>
+
+    <script>
+    window.onload = function() {
+        const quizData = [{'question': 'The stage in the policy-making process where issues are brought to the attention of government as needing action.', 'correct': 'Agenda Setting', 'answers': ['Agenda Setting', 'Evaluation (Policy Process)', 'Non-Tax Revenue', 'Sales Tax']}, {'question': 'A Texas constitutional requirement that prevents the legislature from passing a budget that spends more than expected revenue.', 'correct': 'Balanced Budget Provision', 'answers': ['Termination (Policy Process)', 'Balanced Budget Provision', 'Franchise Tax', 'Temporary Assistance to Needy Families (TANF)']}, {'question': 'A system in Texas where the state legislature meets every two years and passes a budget covering a two-year cycle.', 'correct': 'Biennial Budget System', 'answers': ['Policy-Making Model', 'Business and Economic Development', 'Biennial Budget System', 'Progressive Tax']}, {'question': "One of Texas's top three budget categories, including spending on infrastructure, especially highways.", 'correct': 'Business and Economic Development', 'answers': ['Business and Economic Development', 'Formulation (Policy Process)', 'Sunset Advisory Commission', 'Legislative Appropriations Request (LAR)']}, {'question': 'State revenue earmarked by law or the constitution for specific purposes, such as the gasoline tax for road maintenance.', 'correct': 'Dedicated Funds', 'answers': ['Non-Tax Revenue', 'Dedicated Funds', 'Regressive Tax', 'Sales Tax']}, {'question': 'Policies where everyone pays and everyone benefits, like public parks and infrastructure funded by taxes.', 'correct': 'Distributive Policies', 'answers': ['Business and Economic Development', 'Progressive Tax', 'Distributive Policies', 'Texas Comptroller']}, {'question': 'The stage in policy-making where a policy is assessed for effectiveness and need for changes.', 'correct': 'Evaluation (Policy Process)', 'answers': ['Fiscal Conservatism', 'Evaluation (Policy Process)', 'Paradigm (Policy)', 'Legislative Appropriations Request (LAR)']}, {'question': 'Non-tax revenue provided by the federal government, now the largest revenue source in Texas.', 'correct': 'Federal Grants', 'answers': ['Motor Vehicle Sales Tax', 'Progressive Tax', 'Federal Grants', 'Agenda Setting']}, {'question': "Texas's guiding budget principle, supporting low taxes, limited public services, and opposition to deficit spending.", 'correct': 'Fiscal Conservatism', 'answers': ['Public Policy', 'Fiscal Conservatism', 'Legislative Appropriations Request (LAR)', 'Non-Tax Revenue']}, {'question': 'The stage where solutions to a policy issue are debated and government involvement is determined.', 'correct': 'Formulation (Policy Process)', 'answers': ['Regressive Tax', 'Biennial Budget System', 'Voter ID Laws', 'Formulation (Policy Process)']}, {'question': "Texas's primary tax on businesses, also known as the margin tax, levied on total revenue minus costs.", 'correct': 'Franchise Tax', 'answers': ['Dedicated Funds', 'Temporary Assistance to Needy Families (TANF)', 'Regulatory Policies', 'Franchise Tax']}, {'question': 'The phase where a policy is enacted and carried out by agencies.', 'correct': 'Implementation (Policy Process)', 'answers': ['Regulatory Policies', 'Legislative Budget Board (LBB)', 'Implementation (Policy Process)', 'Sales Tax']}, {'question': 'A budget request made by state agencies, guided by the Legislative Budget Board.', 'correct': 'Legislative Appropriations Request (LAR)', 'answers': ['Regressive Tax', 'Sunset Advisory Commission', 'Balanced Budget Provision', 'Legislative Appropriations Request (LAR)']}, {'question': "A powerful state board that develops Texas's budget, co-chaired by the lieutenant governor and speaker of the house.", 'correct': 'Legislative Budget Board (LBB)', 'answers': ['Non-Tax Revenue', 'Legislative Appropriations Request (LAR)', 'Legislative Budget Board (LBB)', 'Texas Comptroller']}, {'question': "A modern form of Texas's franchise tax, based on a company's revenue minus either compensation or cost of goods sold.", 'correct': 'Margin Tax', 'answers': ['Paradigm (Policy)', 'Non-Tax Revenue', 'Fiscal Conservatism', 'Margin Tax']}, {'question': 'A per-gallon tax on gasoline and diesel, used to fund road construction and maintenance.', 'correct': 'Motor Fuels Tax', 'answers': ['Motor Fuels Tax', 'Implementation (Policy Process)', 'Sales Tax', 'Texas Comptroller']}, {'question': 'A 6.25% tax on vehicle purchases in Texas; a significant source of state revenue.', 'correct': 'Motor Vehicle Sales Tax', 'answers': ['Motor Vehicle Sales Tax', 'Balanced Budget Provision', 'Legislative Budget Board (LBB)', 'Federal Grants']}, {'question': 'Revenue not collected through taxes, such as federal aid, licenses, lottery, and investment income.', 'correct': 'Non-Tax Revenue', 'answers': ['Voter ID Laws', 'Progressive Tax', 'Regulatory Policies', 'Non-Tax Revenue']}, {'question': 'A model or conceptual framework used to explain stages of the policy-making process.', 'correct': 'Paradigm (Policy)', 'answers': ['Paradigm (Policy)', 'Policy-Making Model', 'Motor Fuels Tax', 'Formulation (Policy Process)']}, {'question': 'A five-stage model (agenda setting, formulation, implementation, evaluation, change/termination) used to analyze public policy.', 'correct': 'Policy-Making Model', 'answers': ['Evaluation (Policy Process)', 'Policy-Making Model', 'Fiscal Conservatism', 'Sunset Advisory Commission']}, {'question': 'A tax system in which those with higher incomes pay a higher percentage of their income.', 'correct': 'Progressive Tax', 'answers': ['Margin Tax', 'Motor Vehicle Sales Tax', 'Non-Tax Revenue', 'Progressive Tax']}, {'question': 'Any action or inaction by government that affects the public; includes laws, regulations, and funding decisions.', 'correct': 'Public Policy', 'answers': ['Federal Grants', 'Public Policy', 'Texas Comptroller', 'Non-Tax Revenue']}, {'question': 'Policies where taxes from one group support benefits for another, often controversial (e.g., welfare programs).', 'correct': 'Redistributive Policies', 'answers': ['Redistributive Policies', 'Regressive Tax', 'Texas Comptroller', 'Termination (Policy Process)']}, {'question': 'A tax that takes a larger percentage of income from low-income earners than from the wealthy.', 'correct': 'Regressive Tax', 'answers': ['Regressive Tax', 'Dedicated Funds', 'Motor Vehicle Sales Tax', 'Formulation (Policy Process)']}, {'question': 'Rules enacted by government to regulate specific behaviors, often to protect public interests.', 'correct': 'Regulatory Policies', 'answers': ['Redistributive Policies', 'Agenda Setting', 'Regulatory Policies', 'Distributive Policies']}, {'question': 'The largest source of state tax revenue in Texas; a tax on retail goods and services.', 'correct': 'Sales Tax', 'answers': ['Paradigm (Policy)', 'Sales Tax', 'Redistributive Policies', 'Policy-Making Model']}, {'question': 'Taxes on goods or behaviors considered harmful (e.g., tobacco, alcohol, adult entertainment).', 'correct': 'Sin Taxes', 'answers': ['Sales Tax', 'Sin Taxes', 'Formulation (Policy Process)', 'Progressive Tax']}, {'question': 'A non-tax revenue source generating billions, with most revenue dedicated to education.', 'correct': 'State Lottery', 'answers': ['Public Policy', 'Formulation (Policy Process)', 'Legislative Appropriations Request (LAR)', 'State Lottery']}, {'question': 'A commission that evaluates the effectiveness and need for state agencies on a rotating basis.', 'correct': 'Sunset Advisory Commission', 'answers': ['Policy-Making Model', 'Evaluation (Policy Process)', 'Texas Comptroller', 'Sunset Advisory Commission']}, {'question': 'A welfare program offering limited cash payments to low-income families, mostly funded by federal grants.', 'correct': 'Temporary Assistance to Needy Families (TANF)', 'answers': ['Temporary Assistance to Needy Families (TANF)', 'Legislative Budget Board (LBB)', 'Evaluation (Policy Process)', 'Redistributive Policies']}, {'question': 'The stage in the policy process where a policy is repealed or significantly altered.', 'correct': 'Termination (Policy Process)', 'answers': ['Regulatory Policies', 'Agenda Setting', 'Motor Vehicle Sales Tax', 'Termination (Policy Process)']}, {'question': 'The official who estimates and certifies state revenue, playing a key role in setting spending limits.', 'correct': 'Texas Comptroller', 'answers': ['Distributive Policies', 'Biennial Budget System', 'Texas Comptroller', 'Termination (Policy Process)']}, {'question': 'Policies requiring voters to present specific identification, often controversial and subject to legal challenges.', 'correct': 'Voter ID Laws', 'answers': ['Sales Tax', 'Regressive Tax', 'Voter ID Laws', 'Legislative Budget Board (LBB)']}];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function renderQuiz() {
+            shuffle(quizData);
+            const quizForm = document.getElementById('quizForm');
+            quizForm.innerHTML = "";
+            quizData.forEach((q, idx) => {
+                shuffle(q.answers);
+                const questionHTML = `
+                    <div class="question">
+                        <strong>${idx + 1}. ${q.question}</strong>
+                        <div class="answers">
+                            ${
+                                q.answers.map((answer, aIdx) => `
+                                    <label><input type="radio" name="q${idx}" value="${answer.replace(/"/g, '&quot;')}"/> ${answer}</label>
+                                `).join('')
+                            }
+                        </div>
+                    </div>
+                `;
+                quizForm.innerHTML += questionHTML;
+            });
+        }
+
+        document.getElementById("submitBtn").addEventListener("click", function(e) {
+            e.preventDefault();
+            const quizForm = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('result');
+            let score = 0;
+            let missed = [];
+
+            quizData.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                const userAnswer = selected ? selected.value : "";
+                if (userAnswer === q.correct) {
+                    score++;
+                } else {
+                    missed.push({question: q.question, correct: q.correct});
+                }
+            });
+
+            quizForm.innerHTML = "";
+            document.getElementById("submitBtn").style.display = "none";
+
+            resultDiv.innerHTML = `<p>You got <strong>${score} / ${quizData.length}</strong> correct.</p>`;
+            if (missed.length > 0) {
+                resultDiv.innerHTML += "<h3>Missed Questions:</h3>";
+                missed.forEach(m => {
+                    resultDiv.innerHTML += `<div class="missed"><strong>${m.question}</strong><br><span class="correct-answer">Correct Answer: ${m.correct}</span></div>`;
+                });
+            }
+        });
+
+        renderQuiz();
+    };
+    </script>
+</body>
+</html>
